@@ -1,22 +1,19 @@
-// Importações necessárias
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
+import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
-// Definição da classe Funcionario
 public class Funcionario extends Pessoa {
-    // Atributos da classe Funcionario
     private BigDecimal salario;
     private String funcao;
 
-    // Construtor da classe Funcionario
     public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao) {
         super(nome, dataNascimento);
         this.salario = salario;
         this.funcao = funcao;
     }
 
-    // Métodos getters e setters para os atributos
     public BigDecimal getSalario() {
         return salario;
     }
@@ -33,9 +30,17 @@ public class Funcionario extends Pessoa {
         this.funcao = funcao;
     }
 
-    // Método para formatar o salário conforme especificação
-    public String formatarSalario() {
-        DecimalFormat df = new DecimalFormat("#,##0.00");
-        return df.format(salario);
+    public int calcularIdade() {
+        LocalDate hoje = LocalDate.now();
+        return Period.between(getDataNascimento(), hoje).getYears();
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return "Nome: " + getNome() +
+                "\nData de Nascimento: " + getDataNascimento().format(formatter) +
+                "\nSalário: R$ " + salario.setScale(2, RoundingMode.HALF_UP).toString().replace(".", ",") +
+                "\nFunção: " + funcao + "\n";
     }
 }
