@@ -31,10 +31,6 @@ O projeto está estruturado da seguinte forma:
 
 Para utilizar o projeto, clone o repositório e abra-o no IntelliJ IDEA ou na sua IDE preferida. Certifique-se de configurar corretamente o JDK.
 
-## Como Contribuir
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um pull request com melhorias ou correções.
-
 ## Autor
 
 Desenvolvido por Felipe da Silva Rosa - felipedasvrosa@gmail.com
